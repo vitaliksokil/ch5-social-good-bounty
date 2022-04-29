@@ -171,7 +171,7 @@ export default {
           icon: 'success',
           title: 'Success',
           text: 'Your Meeting has been created!',
-          footer: `<a href="/profile/my-meetings" >See your meetings</a>`,
+          footer: ``,
         })
         this.cleanUpForm();
       }catch (error){

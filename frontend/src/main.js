@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import { createWebHistory, createRouter } from "vue-router";
+import { createWebHashHistory, createRouter } from "vue-router";
 import './assets/scss/app.scss'
 import {init} from "@/utils";
 import VueLoading from 'vue-loading-overlay';
@@ -17,14 +17,16 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueClipboard from 'vue3-clipboard'
 
 import filters from "@/filters";
-
+const publicPath = process.env.VUE_APP_NODE_ENV === 'production'
+    ? '/ch5-social-good-bounty/'
+    : '/';
 const routes = [
-    { path: '/', component: () => import('./components/Pages/HomeComponent'), name:'home'  },
-    { path: '/about', component: () => import('./components/Pages/AboutComponent'), name:'about' },
-    { path: '/meetings', component: () => import('./components/Pages/MeetingsComponent'), name:'meetings' },
-    { path: '/meetings/:id', component: () => import('./components/Pages/SingleMeetingComponent'), name:'meeting-single' },
+    { path: publicPath, component: () => import('./components/Pages/HomeComponent'), name:'home'  },
+    { path: publicPath + 'about', component: () => import('./components/Pages/AboutComponent'), name:'about' },
+    { path: publicPath + 'meetings', component: () => import('./components/Pages/MeetingsComponent'), name:'meetings' },
+    { path: publicPath + 'meetings/:id', component: () => import('./components/Pages/SingleMeetingComponent'), name:'meeting-single' },
     {
-        path: '/profile',
+        path: publicPath + 'profile',
         component: () => import('./components/Pages/Profile/ProfileComponent'),
         name:'profile',
         beforeEnter: () => {
@@ -52,7 +54,7 @@ const routes = [
     },
 ]
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes, // short for `routes: routes`
 })
 

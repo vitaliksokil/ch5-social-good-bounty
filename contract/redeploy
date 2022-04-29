@@ -1,0 +1,4 @@
+near delete main.meetingbuy.testnet meetingbuy.testnet && \
+near create-account main.meetingbuy.testnet --masterAccount meetingbuy.testnet && \
+./build.sh && near deploy main.meetingbuy.testnet --wasmFile res/social_good_bounty.wasm && \
+near call main.meetingbuy.testnet new '{"owner_id": "main.meetingbuy.testnet"}' --accountId main.meetingbuy.testnet

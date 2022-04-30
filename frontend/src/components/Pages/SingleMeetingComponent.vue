@@ -88,7 +88,7 @@ export default {
                 "meeting_id": +this.$route.params.id,
               },
               gas: BOATLOAD_OF_GAS,
-              deposit: Big((this.currentMeeting.ticket_price / (10**24).toFixed(5))).times(10 ** 24).toFixed()
+              deposit: Big((this.currentMeeting.ticket_price / (10**24)).toFixed(5)).times(10 ** 24).toFixed()
             },
           },
         ]
